@@ -1,0 +1,579 @@
+<!-- Illustrations SVG intégrées (data-URI). Remplacez chaque src par l'URL de vos vraies photos d'hôtel quand vous les aurez. -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumea — Le logiciel qui fait rayonner votre hôtel</title>
+<meta name="description" content="Lumea est le logiciel de gestion pensé pour les propriétaires d'hôtels en Afrique : réservations sans surbooking, réception fluide, paiement Mobile Money, satisfaction client. Plus de temps pour vos clients, plus de revenus pour votre établissement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#14213D; --night-2:#0C1730; --navy:#0A1F44;
+    --gold:#C9A961; --gold-bright:#E0C078; --gold-deep:#A8853F;
+    --cream:#F7F3EA; --cream-2:#FBF8F1;
+    --ink:#1A2238; --slate:#5C6680; --line:#E6E0D2;
+    --white:#fff; --plum:#3D2C5E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;overflow-x:hidden;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.08;letter-spacing:-0.5px;}
+  a{text-decoration:none;color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+  .gold{color:var(--gold);}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:.35s;}
+  nav.scrolled{background:rgba(12,23,48,0.96);box-shadow:0 8px 30px rgba(0,0,0,.25);padding:13px 0;backdrop-filter:blur(8px);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:13px;color:#fff;}
+  .brand .mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(201,169,97,.4);}
+  .brand .mark svg{width:24px;height:24px;}
+  .brand .name{font-family:'Fraunces',serif;font-size:25px;font-weight:600;letter-spacing:.5px;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{color:rgba(255,255,255,.82);font-size:15px;font-weight:500;transition:.2s;}
+  .nav-links a:hover{color:var(--gold-bright);}
+  .nav-cta{background:var(--gold);color:var(--night)!important;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;transition:.2s;}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,169,97,.45);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:26px;height:2px;background:#fff;border-radius:2px;}
+
+  /* HERO with photo */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;padding:160px 0 90px;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.82);}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(12,23,48,.96) 0%,rgba(20,33,61,.9) 38%,rgba(20,33,61,.6) 100%),linear-gradient(180deg,rgba(12,23,48,0) 45%,rgba(12,23,48,.85) 100%);}
+  .hero-inner{position:relative;z-index:2;max-width:660px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(201,169,97,.16);border:1px solid rgba(201,169,97,.4);color:var(--gold-bright);font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:28px;}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--gold-bright);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,192,120,.5);}70%{box-shadow:0 0 0 12px rgba(224,192,120,0);}100%{box-shadow:0 0 0 0 rgba(224,192,120,0);}}
+  .hero h1{font-size:68px;margin-bottom:24px;font-weight:600;}
+  .hero h1 em{font-style:italic;color:var(--gold-bright);}
+  .hero p.lead{font-size:20px;color:rgba(255,255,255,.88);max-width:560px;margin-bottom:38px;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--night);padding:17px 34px;border-radius:999px;font-weight:700;font-size:16px;transition:.2s;display:inline-flex;align-items:center;gap:10px;}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(201,169,97,.5);}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:17px 32px;border-radius:999px;font-weight:600;font-size:16px;transition:.2s;}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);}
+  .hero-meta{display:flex;gap:32px;margin-top:46px;flex-wrap:wrap;}
+  .hero-meta .m .v{font-family:'Fraunces',serif;font-size:34px;color:var(--gold-bright);line-height:1;}
+  .hero-meta .m .l{font-size:13px;color:rgba(255,255,255,.65);margin-top:6px;max-width:150px;}
+
+  /* STRIP */
+  .strip{background:var(--navy);color:rgba(255,255,255,.78);padding:20px 0;}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;font-size:14.5px;}
+  .strip b{color:var(--gold-bright);font-weight:700;}
+
+  section.block{padding:110px 0;}
+  .sec-head{max-width:680px;margin:0 auto 60px;text-align:center;}
+  .sec-head .kicker{color:var(--gold-deep);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+  .sec-head h2{font-size:44px;color:var(--ink);margin-bottom:18px;}
+  .sec-head p{font-size:18px;color:var(--slate);}
+
+  /* SPLIT (image + text) */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .split.rev .split-media{order:2;}
+  .split-media{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(20,33,61,.4);aspect-ratio:4/3;}
+  .split-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s;}
+  .split-media:hover img{transform:scale(1.05);}
+  .split-media .badge{position:absolute;border-radius:16px;padding:16px 20px;background:rgba(12,23,48,.86);backdrop-filter:blur(6px);color:#fff;box-shadow:0 16px 40px rgba(0,0,0,.3);}
+  .badge .bv{font-family:'Fraunces',serif;font-size:26px;color:var(--gold-bright);line-height:1;}
+  .badge .bl{font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;}
+  .badge.tl{top:22px;left:22px;}
+  .badge.br{bottom:22px;right:22px;}
+  .split-text .kicker{color:var(--gold-deep);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+  .split-text h2{font-size:40px;color:var(--ink);margin-bottom:20px;}
+  .split-text p{color:var(--slate);font-size:17px;margin-bottom:18px;}
+  .split-text ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:8px;}
+  .split-text li{display:flex;gap:13px;font-size:16px;color:var(--ink);}
+  .split-text li .ck{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));display:flex;align-items:center;justify-content:center;color:var(--night);font-size:13px;font-weight:800;margin-top:2px;}
+
+  /* FEATURES band */
+  .feat-section{background:linear-gradient(180deg,var(--cream),var(--cream-2));}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .feat{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.25s;}
+  .feat:hover{transform:translateY(-5px);box-shadow:0 22px 44px -18px rgba(20,33,61,.2);border-color:var(--gold);}
+  .feat .ic{width:54px;height:54px;border-radius:14px;background:var(--night);color:var(--gold-bright);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:18px;}
+  .feat h3{font-size:21px;margin-bottom:9px;color:var(--ink);}
+  .feat p{color:var(--slate);font-size:15px;}
+
+  /* SURBOOKING highlight with photo bg */
+  .hl{position:relative;border-radius:28px;overflow:hidden;color:#fff;}
+  .hl-bg{position:absolute;inset:0;z-index:0;}
+  .hl-bg img{width:100%;height:100%;object-fit:cover;}
+  .hl-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(12,23,48,.95),rgba(61,44,94,.8));}
+  .hl-inner{position:relative;z-index:2;padding:70px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;}
+  .hl-inner .kicker{color:var(--gold-bright);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+  .hl-inner h2{font-size:40px;color:#fff;margin-bottom:18px;}
+  .hl-inner p{color:rgba(255,255,255,.85);font-size:17px;}
+  .cal{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;backdrop-filter:blur(6px);}
+  .cal .row{display:grid;grid-template-columns:74px repeat(5,1fr);gap:7px;margin-bottom:7px;align-items:center;}
+  .cal .lbl{font-size:12px;color:rgba(255,255,255,.7);}
+  .cal .cell{height:30px;border-radius:7px;}
+  .c-book{background:linear-gradient(135deg,var(--gold),var(--gold-bright));}
+  .c-free{background:rgba(255,255,255,.1);}
+  .c-block{background:rgba(143,224,174,.3);}
+  .cal .head{font-size:11px;color:rgba(255,255,255,.55);text-align:center;}
+
+  /* JOURNEY / VoxEcho */
+  .vox-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center;}
+  .vox-photo{border-radius:24px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 40px 80px -30px rgba(20,33,61,.4);position:relative;}
+  .vox-photo img{width:100%;height:100%;object-fit:cover;}
+  .vox-photo .flow-over{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(12,23,48,.9);backdrop-filter:blur(8px);border-radius:16px;padding:18px;}
+  .flow-step{display:flex;align-items:center;gap:13px;padding:8px 0;}
+  .flow-ic{width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;}
+  .flow-step .txt strong{display:block;font-size:14px;color:#fff;}
+  .flow-step .txt span{font-size:12px;color:rgba(255,255,255,.65);}
+  .vox-text .kicker{color:var(--gold-deep);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+  .vox-text h2{font-size:40px;margin-bottom:20px;}
+  .vox-text p{color:var(--slate);font-size:17px;margin-bottom:16px;}
+  .vox-note{background:var(--cream);border-left:3px solid var(--gold);padding:14px 18px;border-radius:0 12px 12px 0;font-size:14px;color:var(--slate);}
+
+  /* TESTIMONIAL */
+  .testi{background:linear-gradient(150deg,var(--night),var(--night-2));color:#fff;}
+  .testi .wrap{display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center;}
+  .testi-photo{border-radius:20px;overflow:hidden;aspect-ratio:1;box-shadow:0 30px 60px rgba(0,0,0,.4);}
+  .testi-photo img{width:100%;height:100%;object-fit:cover;}
+  .testi blockquote{font-family:'Fraunces',serif;font-size:28px;font-style:italic;line-height:1.4;color:#fff;margin-bottom:24px;font-weight:400;}
+  .testi blockquote::before{content:"“";color:var(--gold-bright);font-size:50px;line-height:0;vertical-align:-18px;margin-right:6px;}
+  .testi .who{font-weight:700;color:var(--gold-bright);font-size:16px;}
+  .testi .role{font-size:14px;color:rgba(255,255,255,.6);}
+  .testi .disc{font-size:11px;color:rgba(255,255,255,.35);margin-top:18px;}
+
+  /* AUDIENCE */
+  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .aud{border-radius:22px;padding:42px;color:#fff;position:relative;overflow:hidden;}
+  .aud.hot{background:linear-gradient(150deg,var(--night),var(--plum));}
+  .aud.inv{background:linear-gradient(150deg,var(--navy),#1B3A6B);}
+  .aud h3{font-size:25px;color:#fff;margin-bottom:18px;}
+  .aud ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .aud li{display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.88);}
+  .aud li::before{content:"◆";color:var(--gold-bright);font-size:10px;margin-top:6px;}
+
+  /* PRICING */
+  .price-section{background:linear-gradient(180deg,var(--cream),var(--cream-2));}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
+  .price{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:34px;display:flex;flex-direction:column;transition:.25s;}
+  .price:hover{transform:translateY(-6px);box-shadow:0 26px 50px -20px rgba(20,33,61,.22);}
+  .price.feat-card{border:2px solid var(--gold);position:relative;}
+  .price.feat-card .tagp{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--night);font-size:12px;font-weight:800;padding:6px 16px;border-radius:99px;letter-spacing:.5px;}
+  .price .pname{font-family:'Fraunces',serif;font-size:24px;color:var(--ink);margin-bottom:6px;}
+  .price .pdesc{font-size:14px;color:var(--slate);margin-bottom:20px;min-height:42px;}
+  .price .pamount{font-family:'Fraunces',serif;font-size:30px;color:var(--night);margin-bottom:4px;}
+  .price .pamount small{font-size:14px;color:var(--slate);font-family:'Manrope';font-weight:500;}
+  .price ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin:22px 0 26px;flex:1;}
+  .price li{display:flex;gap:10px;font-size:14.5px;color:var(--ink);}
+  .price li::before{content:"✓";color:var(--gold-deep);font-weight:800;}
+  .price .pbtn{text-align:center;padding:13px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s;}
+  .price .pbtn.solid{background:var(--night);color:#fff;}
+  .price .pbtn.solid:hover{background:var(--navy);}
+  .price .pbtn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--night);}
+  .price-note{text-align:center;color:var(--slate);font-size:14px;margin-top:30px;}
+
+  /* FAQ */
+  .faq-grid{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .faq summary{padding:22px 26px;font-weight:700;font-size:17px;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";font-size:24px;color:var(--gold-deep);font-weight:400;}
+  .faq[open] summary::after{content:"–";}
+  .faq .a{padding:0 26px 22px;color:var(--slate);font-size:15.5px;}
+
+  /* CTA */
+  .cta{position:relative;overflow:hidden;color:#fff;}
+  .cta-bg{position:absolute;inset:0;z-index:0;}
+  .cta-bg img{width:100%;height:100%;object-fit:cover;}
+  .cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(12,23,48,.96),rgba(20,33,61,.8));}
+  .cta-inner{position:relative;z-index:2;padding:110px 0;text-align:center;}
+  .cta-inner h2{font-size:46px;color:#fff;margin-bottom:18px;}
+  .cta-inner p{color:rgba(255,255,255,.85);font-size:19px;max-width:560px;margin:0 auto 34px;}
+  .contacts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+  .contact-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:12px 20px;border-radius:999px;font-size:15px;color:#fff;font-weight:500;}
+
+  /* FOOTER */
+  footer{background:var(--night-2);color:rgba(255,255,255,.6);padding:54px 0 34px;}
+  .foot-grid{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+  .foot-brand{max-width:300px;}
+  .foot-brand .top{display:flex;align-items:center;gap:12px;color:#fff;margin-bottom:14px;}
+  .foot-brand .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));display:flex;align-items:center;justify-content:center;}
+  .foot-brand .mark svg{width:20px;height:20px;}
+  .foot-brand .name{font-family:'Fraunces',serif;font-size:21px;}
+  .foot-brand p{font-size:14px;color:rgba(255,255,255,.55);}
+  .foot-col h4{color:#fff;font-size:15px;margin-bottom:14px;font-family:'Manrope';font-weight:700;}
+  .foot-col a{display:block;font-size:14px;margin-bottom:9px;transition:.2s;}
+  .foot-col a:hover{color:var(--gold-bright);}
+  .foot-bottom{margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;text-align:center;}
+  .foot-bottom .by{color:var(--gold-bright);font-weight:600;}
+
+
+  .dash-shot{border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(20,33,61,.45);border:1px solid var(--line);margin-bottom:56px;background:#F4F6FB;}
+  .dash-shot img{width:100%;height:auto;display:block;}
+  .mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .mod{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.25s;}
+  .mod:hover{transform:translateY(-4px);box-shadow:0 18px 38px -18px rgba(20,33,61,.2);border-color:var(--gold);}
+  .mod .mhd{display:flex;align-items:center;gap:11px;margin-bottom:10px;}
+  .mod .mi{font-size:22px;}
+  .mod h3{font-size:17px;color:var(--ink);}
+  .mod p{font-size:14px;color:var(--slate);}
+  @media(max-width:920px){.mod-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.mod-grid{grid-template-columns:1fr;}}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:920px){
+    .split,.hl-inner,.vox-grid,.aud-grid,.testi .wrap{grid-template-columns:1fr;}
+    .split.rev .split-media{order:0;}
+    .feat-grid,.price-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:46px;}
+    .sec-head h2,.split-text h2,.hl-inner h2,.vox-text h2,.cta-inner h2,.testi blockquote{font-size:30px;}
+    .nav-links{display:none;}.burger{display:flex;}
+    .hl-inner,.cta-inner{padding:48px 26px;}
+    section.block{padding:72px 0;}
+    .testi-photo{max-width:260px;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap nav-inner">
+  <div class="brand">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z" fill="#14213D"/><circle cx="12" cy="11" r="3.2" fill="#14213D"/><path d="M12 11l4-2.3M12 11v4.6M12 11L8 8.7" stroke="#C9A961" stroke-width="1.1"/></svg></div>
+    <span class="name">Lumea</span>
+  </div>
+  <div class="nav-links">
+    <a href="#hotel">Votre hôtel</a>
+    <a href="#fonctions">Fonctionnalités</a>
+    <a href="#interface">L’interface</a>
+    <a href="#satisfaction">Satisfaction</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#contact" class="nav-cta">Demander une démo</a>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEwMDAiPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJza3kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMEMxNzMwIi8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiMzRDJDNUUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1QTQzMjciLz48L2xpbmVhckdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9Im1vb24iIGN4PSIwLjUiIGN5PSIwLjUiIHI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZGNkUwIi8+PHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNGRkY2RTAiIHN0b3Atb3BhY2l0eT0iMC41Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTBDMDc4IiBzdG9wLW9wYWNpdHk9IjAiLz48L3JhZGlhbEdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciIGN4PSIwLjUiIGN5PSIxIiByPSIwLjgiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0UwQzA3OCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTBDMDc4IiBzdG9wLW9wYWNpdHk9IjAiLz48L3JhZGlhbEdyYWRpZW50Pgo8ZmlsdGVyIGlkPSJzb2Z0Ij48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI2Ii8+PC9maWx0ZXI+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iMTAwMCIgZmlsbD0idXJsKCNza3kpIi8+CjwhLS0gw6l0b2lsZXMgw6lwYXJzZXMsIGRpc2Nyw6h0ZXMgLS0+CjxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIxLjAiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSI3MSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMjc0IiBjeT0iMTQyIiByPSIxLjAiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNDkiLz48Y2lyY2xlIGN4PSI0MTEiIGN5PSIyMTMiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjU0OCIgY3k9IjI4NCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iNjg1IiBjeT0iMzU1IiByPSIxLjYiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNDkiLz48Y2lyY2xlIGN4PSI4MjIiIGN5PSI2IiByPSIxLjAiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI5NTkiIGN5PSI3NyIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMTA5NiIgY3k9IjE0OCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iMTIzMyIgY3k9IjIxOSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMTM3MCIgY3k9IjI5MCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMTUwNyIgY3k9IjM2MSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iNDQiIGN5PSIxMiIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMTgxIiBjeT0iODMiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjMxOCIgY3k9IjE1NCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iNDU1IiBjeT0iMjI1IiByPSIxLjYiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI1OTIiIGN5PSIyOTYiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjcyOSIgY3k9IjM2NyIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iODY2IiBjeT0iMTgiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjEwMDMiIGN5PSI4OSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMTE0MCIgY3k9IjE2MCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iMTI3NyIgY3k9IjIzMSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMTQxNCIgY3k9IjMwMiIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMTU1MSIgY3k9IjM3MyIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iODgiIGN5PSIyNCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMjI1IiBjeT0iOTUiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjM2MiIgY3k9IjE2NiIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iNDk5IiBjeT0iMjM3IiByPSIxLjYiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI2MzYiIGN5PSIzMDgiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9Ijc3MyIgY3k9IjM3OSIgcj0iMS42IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iOTEwIiBjeT0iMzAiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjEwNDciIGN5PSIxMDEiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjExODQiIGN5PSIxNzIiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9IjEzMjEiIGN5PSIyNDMiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjE0NTgiIGN5PSIzMTQiIHI9IjEuMCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjE1OTUiIGN5PSIzODUiIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9IjEzMiIgY3k9IjM2IiByPSIxLjAiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIyNjkiIGN5PSIxMDciIHI9IjEuNiIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjQwNiIgY3k9IjE3OCIgcj0iMS4wIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQ5Ii8+PGNpcmNsZSBjeD0iNTQzIiBjeT0iMjQ5IiByPSIxLjYiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMjUiLz4KPCEtLSBsdW5lIGRvdWNlIC0tPgo8Y2lyY2xlIGN4PSIxMjMwIiBjeT0iMjMwIiByPSIxNzAiIGZpbGw9InVybCgjbW9vbikiLz4KPGNpcmNsZSBjeD0iMTIzMCIgY3k9IjIzMCIgcj0iNTgiIGZpbGw9IiNGRkZBRUMiIG9wYWNpdHk9IjAuOTIiLz4KPCEtLSBoYWxvIGNoYXVkIGJhcyAtLT4KPHJlY3QgeD0iMCIgeT0iNTAwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZ2xvdykiLz4KPCEtLSBzaWxob3VldHRlcyBkJ2jDtHRlbCBmbG91dMOpZXMgKG1hc3NlcywgcGFzIGRlIGZlbsOqdHJlcyBlbiBncmlsbGUpIC0tPgo8ZyBmaWx0ZXI9InVybCgjc29mdCkiIG9wYWNpdHk9IjAuOSI+CjxyZWN0IHg9IjI1MCIgeT0iNDcwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQzMCIgcng9IjYiIGZpbGw9IiMxMDFFMzgiLz4KPHJlY3QgeD0iNTYwIiB5PSIzNjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNTQwIiByeD0iOCIgZmlsbD0iIzBFMUIzMyIvPgo8cmVjdCB4PSI5OTAiIHk9IjUwMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI0MDAiIHJ4PSI2IiBmaWxsPSIjMTAxRTM4Ii8+CjwvZz4KPCEtLSBxdWVscXVlcyBsdW1pw6hyZXMgY2hhdWRlcyBkaWZmdXNlcywgaXJyw6lndWxpw6hyZXMgLS0+CjxnIGZpbGw9IiNFMEMwNzgiPgo8cmVjdCB4PSI2MTAiIHk9IjQyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgb3BhY2l0eT0iMC45Ii8+PHJlY3QgeD0iNjYwIiB5PSI0MjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjcyMCIgeT0iNDYwIiB3aWR0aD0iMTYiIGhlaWdodD0iMjIiIHJ4PSI0IiBvcGFjaXR5PSIwLjgiLz48cmVjdCB4PSI2MjAiIHk9IjUyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgb3BhY2l0eT0iMC42Ii8+PHJlY3QgeD0iNzAwIiB5PSI1NDAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuODUiLz48cmVjdCB4PSI3NzAiIHk9IjUwMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgb3BhY2l0eT0iMC40Ii8+PHJlY3QgeD0iNjQwIiB5PSI2MDAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuNyIvPjxyZWN0IHg9Ijc0MCIgeT0iNjIwIiB3aWR0aD0iMTYiIGhlaWdodD0iMjIiIHJ4PSI0IiBvcGFjaXR5PSIwLjU1Ii8+PHJlY3QgeD0iNjgwIiB5PSI2ODAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuOCIvPjxyZWN0IHg9IjMxMCIgeT0iNTYwIiB3aWR0aD0iMTYiIGhlaWdodD0iMjIiIHJ4PSI0IiBvcGFjaXR5PSIwLjciLz48cmVjdCB4PSIzNjAiIHk9IjYyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgb3BhY2l0eT0iMC41Ii8+PHJlY3QgeD0iNDQwIiB5PSI1ODAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuNzUiLz48cmVjdCB4PSIxMDQwIiB5PSI1ODAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuNyIvPjxyZWN0IHg9IjExMTAiIHk9IjU2MCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgb3BhY2l0eT0iMC41Ii8+PHJlY3QgeD0iMTE4MCIgeT0iNjIwIiB3aWR0aD0iMTYiIGhlaWdodD0iMjIiIHJ4PSI0IiBvcGFjaXR5PSIwLjciLz48cmVjdCB4PSIxMDYwIiB5PSI2ODAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIG9wYWNpdHk9IjAuNiIvPgo8L2c+CjwhLS0gZW50csOpZSDDqWNsYWlyw6llIC0tPgo8ZWxsaXBzZSBjeD0iNzcwIiBjeT0iOTAwIiByeD0iMTIwIiByeT0iNDAiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMTgiLz4KPCEtLSBwYWxtaWVycyBlbiBvbWJyZSAtLT4KPGcgZmlsbD0iIzBDMTczMCIgb3BhY2l0eT0iMC45MiI+CjxyZWN0IHg9IjEyMCIgeT0iNjUwIiB3aWR0aD0iMTYiIGhlaWdodD0iMjUwIi8+CjxwYXRoIGQ9Ik0xMjggNjUwIHEtNzAgLTQ0IC0xMjUgLTE2IHE2MiAtNiAxMjUgMzAgcTggLTU0IDk2IC02MCBxLTY2IC0xMCAtOTYgNDZ6Ii8+CjxyZWN0IHg9IjE0ODAiIHk9IjY0MCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2MCIvPgo8cGF0aCBkPSJNMTQ4OCA2NDAgcTcwIC00NCAxMjUgLTE2IHEtNjIgLTYgLTEyNSAzMCBxLTggLTU0IC05NiAtNjAgcTY2IC0xMCA5NiA0NnoiLz4KPC9nPgo8IS0tIHNvbCBzb21icmUgLS0+CjxyZWN0IHg9IjAiIHk9Ijg4MCIgd2lkdGg9IjE2MDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMEMxNzMwIi8+Cjwvc3ZnPg==" alt="Façade d'hôtel au crépuscule"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><span class="pulse"></span>Logiciel de gestion hôtelière</span>
+    <h1>Votre hôtel mérite<br>de <em>rayonner.</em></h1>
+    <p class="lead">Lumea gère vos réservations, votre réception et vos paiements Mobile Money pendant que vous vous concentrez sur l'essentiel : vos clients. Plus de temps, plus de revenus, zéro double réservation.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Demander une démo →</a>
+      <a href="#hotel" class="btn-ghost">Voir comment ça marche</a>
+    </div>
+    <div class="hero-meta">
+      <div class="m"><div class="v">0</div><div class="l">double réservation, garantie</div></div>
+      <div class="m"><div class="v">100%</div><div class="l">paiements suivis en temps réel</div></div>
+      <div class="m"><div class="v">MoMo</div><div class="l">encaissement intégré</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip"><div class="wrap">
+  Pensé pour les hôtels <b>d'Afrique</b> &nbsp;·&nbsp; Paiement <b>Mobile Money</b> &nbsp;·&nbsp; Vos données <b>100% privées</b> &nbsp;·&nbsp; Satisfaction client par <b>VoxEcho</b>
+</div></div>
+
+<!-- SPLIT 1 : réception / hospitalité -->
+<section class="block" id="hotel">
+  <div class="wrap split reveal">
+    <div class="split-media">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgdmlld0JveD0iMCAwIDEwMDAgNzUwIj4KPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSIjMTQyMTNEIi8+CjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjQzMCIgZmlsbD0iIzBBMUY0NCIvPgo8IS0tIG11ciBhcnJpw6hyZSArIGxldHRyZXMgTFVNRUEgLS0+CjxyZWN0IHg9IjEyMCIgeT0iNjAiIHdpZHRoPSI3NjAiIGhlaWdodD0iMjQwIiByeD0iMTAiIGZpbGw9IiMwQzE3MzAiLz4KPHRleHQgeD0iNTAwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9Ijc4IiBmaWxsPSIjQzlBOTYxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMTAiPkxVTUVBPC90ZXh0Pgo8IS0tIGNvbXB0b2lyIC0tPgo8cmVjdCB4PSIxODAiIHk9IjQzMCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIyMjAiIHJ4PSIxNCIgZmlsbD0iIzNEMkM1RSIvPgo8cmVjdCB4PSIxODAiIHk9IjQzMCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MCIgcng9IjE0IiBmaWxsPSIjQzlBOTYxIiBvcGFjaXR5PSIwLjg1Ii8+CjxyZWN0IHg9IjIwMCIgeT0iNDkwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzJFMjM0NyIvPgo8IS0tIHBhbm5lYXV4IGRvcsOpcyAtLT4KPHJlY3QgeD0iMjQwIiB5PSI1MTAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTEwIiByeD0iNiIgZmlsbD0iI0E4ODUzRiIgb3BhY2l0eT0iMC41Ii8+CjxyZWN0IHg9IjQ0MCIgeT0iNTEwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjExMCIgcng9IjYiIGZpbGw9IiNBODg1M0YiIG9wYWNpdHk9IjAuNSIvPgo8cmVjdCB4PSI2NDAiIHk9IjUxMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMTAiIHJ4PSI2IiBmaWxsPSIjQTg4NTNGIiBvcGFjaXR5PSIwLjUiLz4KPCEtLSBjbG9jaGUgZGUgcsOpY2VwdGlvbiAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzIwLDQwMCkiPjxlbGxpcHNlIGN4PSIwIiBjeT0iMjAiIHJ4PSI0OCIgcnk9IjE0IiBmaWxsPSIjRTBDMDc4Ii8+PHBhdGggZD0iTS00MCAyMCBhNDAgMzQgMCAwIDEgODAgMHoiIGZpbGw9IiNDOUE5NjEiLz48Y2lyY2xlIGN4PSIwIiBjeT0iLTE4IiByPSI4IiBmaWxsPSIjRTBDMDc4Ii8+PC9nPgo8IS0tIHN1c3BlbnNpb24gLS0+CjxsaW5lIHgxPSI1MDAiIHkxPSIwIiB4Mj0iNTAwIiB5Mj0iNjAiIHN0cm9rZT0iI0E4ODUzRiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjcwIiByPSIyMiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+CjwhLS0gc29sIC0tPgo8cmVjdCB4PSIwIiB5PSI2NTAiIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBDMTczMCIvPgo8cmVjdCB4PSIxODAiIHk9IjY1MCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNBODg1M0YiIG9wYWNpdHk9IjAuMTIiLz4KPC9zdmc+" alt="Réception d'hôtel">
+      <div class="badge tl"><div class="bv">38 sec</div><div class="bl">pour enregistrer un client</div></div>
+    </div>
+    <div class="split-text">
+      <div class="kicker">L'accueil, sans friction</div>
+      <h2>Une réception qui respire l'hospitalité</h2>
+      <p>Le check-in et le check-out se font en quelques gestes. Votre réceptionniste accueille au lieu de remplir des registres, et chaque client repart avec le sentiment d'avoir été attendu.</p>
+      <ul>
+        <li><span class="ck">✓</span> Arrivées et départs du jour visibles d'un coup d'œil</li>
+        <li><span class="ck">✓</span> Fiche client complète : historique, préférences, coordonnées</li>
+        <li><span class="ck">✓</span> Facture et paiement Mobile Money en fin de séjour</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 2 : chambres / planning -->
+<section class="block feat-section">
+  <div class="wrap split rev reveal">
+    <div class="split-media">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgdmlld0JveD0iMCAwIDEwMDAgNzUwIj4KPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSIjRjdGM0VBIi8+CjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjQ3MCIgZmlsbD0iI0VGRTdENiIvPgo8IS0tIG11ciB0w6p0ZSBkZSBsaXQgLS0+CjxyZWN0IHg9IjI1MCIgeT0iODAiIHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiByeD0iMTAiIGZpbGw9IiMxNDIxM0QiLz4KPHJlY3QgeD0iMjcwIiB5PSIxMDAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMjYwIiByeD0iOCIgZmlsbD0iIzBBMUY0NCIvPgo8IS0tIHRhYmxlYXUgLS0+CjxyZWN0IHg9IjQzMCIgeT0iMTQwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjkwIiByeD0iNCIgZmlsbD0iI0M5QTk2MSIgb3BhY2l0eT0iMC44NSIvPgo8IS0tIGxpdCAtLT4KPHJlY3QgeD0iMjEwIiB5PSIzNjAiIHdpZHRoPSI1ODAiIGhlaWdodD0iMjAwIiByeD0iMTQiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3QgeD0iMjEwIiB5PSIzNjAiIHdpZHRoPSI1ODAiIGhlaWdodD0iNzAiIHJ4PSIxNCIgZmlsbD0iI0YzRUNERCIvPgo8IS0tIG9yZWlsbGVycyAtLT4KPHJlY3QgeD0iMjUwIiB5PSIzMjAiIHdpZHRoPSIxNTAiIGhlaWdodD0iODAiIHJ4PSIxNiIgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRTZEY0M4IiBzdHJva2Utd2lkdGg9IjMiLz4KPHJlY3QgeD0iNjAwIiB5PSIzMjAiIHdpZHRoPSIxNTAiIGhlaWdodD0iODAiIHJ4PSIxNiIgZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRTZEY0M4IiBzdHJva2Utd2lkdGg9IjMiLz4KPCEtLSBjb3V2cmUtbGl0IGRvcsOpIC0tPgo8cmVjdCB4PSIyMTAiIHk9IjUwMCIgd2lkdGg9IjU4MCIgaGVpZ2h0PSI2MCIgcng9IjEwIiBmaWxsPSIjQzlBOTYxIiBvcGFjaXR5PSIwLjgiLz4KPCEtLSBsYW1wZXMgLS0+CjxnPjxyZWN0IHg9IjE1MCIgeT0iNDMwIiB3aWR0aD0iNTAiIGhlaWdodD0iODAiIHJ4PSI2IiBmaWxsPSIjMTQyMTNEIi8+PGVsbGlwc2UgY3g9IjE3NSIgY3k9IjQyMCIgcng9IjM4IiByeT0iMjIiIGZpbGw9IiNFMEMwNzgiLz48L2c+CjxnPjxyZWN0IHg9IjgwMCIgeT0iNDMwIiB3aWR0aD0iNTAiIGhlaWdodD0iODAiIHJ4PSI2IiBmaWxsPSIjMTQyMTNEIi8+PGVsbGlwc2UgY3g9IjgyNSIgY3k9IjQyMCIgcng9IjM4IiByeT0iMjIiIGZpbGw9IiNFMEMwNzgiLz48L2c+CjwhLS0gcGxhbnRlIC0tPgo8cmVjdCB4PSI2MCIgeT0iNTQwIiB3aWR0aD0iNzAiIGhlaWdodD0iOTAiIHJ4PSI4IiBmaWxsPSIjM0QyQzVFIi8+CjxwYXRoIGQ9Ik05NSA1NDAgcS00MCAtNzAgLTEwIC0xMjAgcTIwIDUwIDEwIDEyMCBxNDAgLTYwIDcwIC03MCBxLTMwIDQwIC03MCA3MHoiIGZpbGw9IiMzRTZCNTIiLz4KPCEtLSBzb2wgLS0+CjxyZWN0IHg9IjAiIHk9IjYzMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRDhDQkIwIi8+Cjwvc3ZnPg==" alt="Chambre d'hôtel élégante">
+      <div class="badge br"><div class="bv">87%</div><div class="bl">taux d'occupation suivi en direct</div></div>
+    </div>
+    <div class="split-text">
+      <div class="kicker">Vos chambres, toujours justes</div>
+      <h2>Chaque chambre au bon prix, au bon moment</h2>
+      <p>Types de chambres, tarifs, disponibilités : Lumea vous donne une vue calendrier claire de tout votre établissement. Vous remplissez mieux, vous vendez mieux, vous ne perdez plus une réservation faute de visibilité.</p>
+      <ul>
+        <li><span class="ck">✓</span> Calendrier d'occupation en temps réel</li>
+        <li><span class="ck">✓</span> Tarifs et types de chambres configurables</li>
+        <li><span class="ck">✓</span> Arrhes encaissées dès la réservation par MoMo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="block" id="fonctions">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Tout l'hôtel, une plateforme</div>
+      <h2>Ce que Lumea fait pour vous</h2>
+      <p>De la première réservation au dernier au revoir, chaque étape gérée au même endroit.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal"><div class="ic">🗓️</div><h3>Réservations & planning</h3><p>Un calendrier d'occupation limpide et des réservations en quelques clics.</p></div>
+      <div class="feat reveal"><div class="ic">🛎️</div><h3>Réception</h3><p>Check-in et check-out fluides, gestion des séjours et des nuitées.</p></div>
+      <div class="feat reveal"><div class="ic">🛏️</div><h3>Chambres & tarifs</h3><p>Vos types de chambres, vos prix, vos disponibilités, à votre main.</p></div>
+      <div class="feat reveal"><div class="ic">👤</div><h3>Clients</h3><p>Historique des séjours et préférences pour fidéliser durablement.</p></div>
+      <div class="feat reveal"><div class="ic">💳</div><h3>Facturation & MoMo</h3><p>Factures et encaissement Mobile Money, suivi des paiements en direct.</p></div>
+      <div class="feat reveal"><div class="ic">📊</div><h3>Tableaux de bord</h3><p>Occupation, revenus, performance : votre hôtel piloté en un regard.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SURBOOKING highlight -->
+<section class="block">
+  <div class="wrap">
+    <div class="hl reveal">
+      <div class="hl-bg"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJsZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBDMTczMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBBMUY0NCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjbGcpIi8+CjwhLS0gY29sb25uZXMgLS0+CjxyZWN0IHg9IjEyMCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjQwIiByeD0iNiIgZmlsbD0iIzFCMkM0RCIvPjxyZWN0IHg9IjEyMCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNDOUE5NjEiIG9wYWNpdHk9IjAuNyIvPjxyZWN0IHg9IjQ4MCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjQwIiByeD0iNiIgZmlsbD0iIzFCMkM0RCIvPjxyZWN0IHg9IjQ4MCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNDOUE5NjEiIG9wYWNpdHk9IjAuNyIvPjxyZWN0IHg9Ijg0MCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjQwIiByeD0iNiIgZmlsbD0iIzFCMkM0RCIvPjxyZWN0IHg9Ijg0MCIgeT0iMTIwIiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNDOUE5NjEiIG9wYWNpdHk9IjAuNyIvPjxyZWN0IHg9IjEyMDAiIHk9IjEyMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjY0MCIgcng9IjYiIGZpbGw9IiMxQjJDNEQiLz48cmVjdCB4PSIxMjAwIiB5PSIxMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgZmlsbD0iI0M5QTk2MSIgb3BhY2l0eT0iMC43Ii8+CjwhLS0gZ3JhbmQgbHVzdHJlIC0tPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4MDAsNjApIj4KPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjgwIiBzdHJva2U9IiNBODg1M0YiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSItMTIwIiBjeT0iMTMyIiByPSIxMyIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iLTgwIiBjeT0iMTE4IiByPSIxMyIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iLTQwIiBjeT0iMTA0IiByPSIxMyIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iMCIgY3k9IjkwIiByPSIxMyIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDAiIGN5PSIxMDQiIHI9IjEzIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjkiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjExOCIgcj0iMTMiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEzMiIgcj0iMTMiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPgo8L2c+CjwhLS0gZmVuw6p0cmVzIGx1bWluZXVzZXMgYXUgZm9uZCAtLT4KPHJlY3QgeD0iNTYwIiB5PSIyMjAiIHdpZHRoPSI0ODAiIGhlaWdodD0iMzIwIiByeD0iOCIgZmlsbD0iIzJBNEE3RiIgb3BhY2l0eT0iMC41Ii8+CjxsaW5lIHgxPSI4MDAiIHkxPSIyMjAiIHgyPSI4MDAiIHkyPSI1NDAiIHN0cm9rZT0iIzBDMTczMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+CjxsaW5lIHgxPSI1NjAiIHkxPSIzODAiIHgyPSIxMDQwIiB5Mj0iMzgwIiBzdHJva2U9IiMwQzE3MzAiIHN0cm9rZS13aWR0aD0iNiIvPgo8IS0tIGNhbmFww6lzIGxvdW5nZSAtLT4KPHJlY3QgeD0iNjAwIiB5PSI2NDAiIHdpZHRoPSIxODAiIGhlaWdodD0iOTAiIHJ4PSIxNiIgZmlsbD0iIzNEMkM1RSIvPgo8cmVjdCB4PSI4MjAiIHk9IjY0MCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI5MCIgcng9IjE2IiBmaWxsPSIjM0QyQzVFIi8+CjwhLS0gdGFwaXMgZG9yw6kgLS0+CjxlbGxpcHNlIGN4PSI4MDAiIGN5PSI3NjAiIHJ4PSIyODAiIHJ5PSI1MCIgZmlsbD0iI0M5QTk2MSIgb3BhY2l0eT0iMC4xNSIvPgo8cmVjdCB4PSIwIiB5PSI3NjAiIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzBDMTczMCIvPgo8L3N2Zz4=" alt="Lobby d'hôtel"></div>
+      <div class="hl-inner">
+        <div>
+          <div class="kicker">Le cœur de Lumea</div>
+          <h2>Plus jamais deux clients pour une même chambre</h2>
+          <p>Le surbooking, c'est un client humilié à la réception et une mauvaise note en ligne le lendemain. Lumea vérifie la disponibilité à chaque réservation et bloque tout chevauchement. Votre réputation est protégée, automatiquement.</p>
+        </div>
+        <div class="cal">
+          <div class="row"><span class="lbl"></span><span class="head">Lun</span><span class="head">Mar</span><span class="head">Mer</span><span class="head">Jeu</span><span class="head">Ven</span></div>
+          <div class="row"><span class="lbl">Ch. 101</span><span class="cell c-book"></span><span class="cell c-book"></span><span class="cell c-free"></span><span class="cell c-free"></span><span class="cell c-book"></span></div>
+          <div class="row"><span class="lbl">Ch. 102</span><span class="cell c-free"></span><span class="cell c-book"></span><span class="cell c-book"></span><span class="cell c-book"></span><span class="cell c-free"></span></div>
+          <div class="row"><span class="lbl">Ch. 103</span><span class="cell c-block"></span><span class="cell c-block"></span><span class="cell c-free"></span><span class="cell c-book"></span><span class="cell c-book"></span></div>
+          <div class="row"><span class="lbl">Suite 04</span><span class="cell c-free"></span><span class="cell c-free"></span><span class="cell c-book"></span><span class="cell c-book"></span><span class="cell c-free"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== INTERFACE DE GESTION ===== -->
+<section class="block" id="interface">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Au cœur de Lumea</div>
+      <h2>Votre hôtel piloté depuis une seule interface</h2>
+      <p>Voici ce que votre équipe utilise chaque jour : un poste de commande clair où tout l'établissement se gère en quelques clics.</p>
+    </div>
+    <div class="dash-shot reveal">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzIwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEzMjAgOTAwIj4KPHJlY3Qgd2lkdGg9IjEzMjAiIGhlaWdodD0iOTAwIiByeD0iMTgiIGZpbGw9IiNGNEY2RkIiLz4KPCEtLSBzaWRlYmFyIC0tPgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjkwMCIgcng9IjE4IiBmaWxsPSIjMTQyMTNEIi8+CjxyZWN0IHg9IjI3MCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjkwMCIgZmlsbD0iIzE0MjEzRCIvPgo8Zz48cmVjdCB4PSIyOCIgeT0iMzQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcng9IjEwIiBmaWxsPSIjQzlBOTYxIi8+Cjx0ZXh0IHg9IjgwIiB5PSI2MiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiPkx1bWVhPC90ZXh0PjwvZz4KPHRleHQgeD0iNDAiIHk9IjExNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjExIiBmaWxsPSIjNkI3MjgwIiBsZXR0ZXItc3BhY2luZz0iMiI+TUVOVTwvdGV4dD4KPHJlY3QgeD0iMjIiIHk9IjEzMiIgd2lkdGg9IjI0NiIgaGVpZ2h0PSI0OCIgcng9IjExIiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iNDAiIHk9IjE0MiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iNSIgZmlsbD0iIzE0MjEzRCIgb3BhY2l0eT0iMC45Ii8+PHRleHQgeD0iNzQiIHk9IjE1OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE3IiBmaWxsPSIjMTQyMTNEIiBmb250LXdlaWdodD0iNzAwIj5UYWJsZWF1IGRlIGJvcmQ8L3RleHQ+PHJlY3QgeD0iNDAiIHk9IjIwNCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iNSIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PHRleHQgeD0iNzQiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE3IiBmaWxsPSIjQUVCOEQwIiBmb250LXdlaWdodD0iNDAwIj5Sw6lzZXJ2YXRpb25zPC90ZXh0PjxyZWN0IHg9IjQwIiB5PSIyNjYiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPjx0ZXh0IHg9Ijc0IiB5PSIyODIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNyIgZmlsbD0iI0FFQjhEMCIgZm9udC13ZWlnaHQ9IjQwMCI+UGxhbm5pbmcgY2hhbWJyZXM8L3RleHQ+PHJlY3QgeD0iNDAiIHk9IjMyOCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iNSIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC45Ii8+PHRleHQgeD0iNzQiIHk9IjM0NCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE3IiBmaWxsPSIjQUVCOEQwIiBmb250LXdlaWdodD0iNDAwIj5Sw6ljZXB0aW9uPC90ZXh0PjxyZWN0IHg9IjQwIiB5PSIzOTAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPjx0ZXh0IHg9Ijc0IiB5PSI0MDYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNyIgZmlsbD0iI0FFQjhEMCIgZm9udC13ZWlnaHQ9IjQwMCI+Q2xpZW50czwvdGV4dD48cmVjdCB4PSI0MCIgeT0iNDUyIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHJ4PSI1IiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjkiLz48dGV4dCB4PSI3NCIgeT0iNDY4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTciIGZpbGw9IiNBRUI4RDAiIGZvbnQtd2VpZ2h0PSI0MDAiPkZhY3R1cmF0aW9uPC90ZXh0PjxyZWN0IHg9IjQwIiB5PSI1MTQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPjx0ZXh0IHg9Ijc0IiB5PSI1MzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNyIgZmlsbD0iI0FFQjhEMCIgZm9udC13ZWlnaHQ9IjQwMCI+UGVyc29ubmVsPC90ZXh0PjxyZWN0IHg9IjQwIiB5PSI1NzYiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuOSIvPjx0ZXh0IHg9Ijc0IiB5PSI1OTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNyIgZmlsbD0iI0FFQjhEMCIgZm9udC13ZWlnaHQ9IjQwMCI+UmFwcG9ydHM8L3RleHQ+CjwhLS0gYmFkZ2UgaG90ZWwgZW4gYmFzIHNpZGViYXIgLS0+CjxyZWN0IHg9IjIyIiB5PSI4MTAiIHdpZHRoPSIyNDYiIGhlaWdodD0iNjAiIHJ4PSIxMiIgZmlsbD0iIzBDMTczMCIvPgo8Y2lyY2xlIGN4PSI1OCIgY3k9Ijg0MCIgcj0iMTgiIGZpbGw9IiNFMEMwNzgiLz4KPHRleHQgeD0iODYiIHk9IjgzNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iNzAwIj5Iw7R0ZWwgQWt3YSBQYWxhY2U8L3RleHQ+Cjx0ZXh0IHg9Ijg2IiB5PSI4NTQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhBOTNBOCI+RG91YWxhIMK3IERpcmVjdGV1cjwvdGV4dD4KCjwhLS0gdG9wYmFyIC0tPgo8dGV4dCB4PSIzMzAiIHk9IjU2IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzFBMjIzOCI+VGFibGVhdSBkZSBib3JkPC90ZXh0Pgo8dGV4dCB4PSIzMzAiIHk9IjgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM4QTkzQTgiPlZ1ZSBkJ2Vuc2VtYmxlIMK3IGF1am91cmQnaHVpPC90ZXh0Pgo8cmVjdCB4PSIxMDkwIiB5PSIzNCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI0MiIgcng9IjIxIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNFOEVCRjEiLz4KPGNpcmNsZSBjeD0iMTExNSIgY3k9IjU1IiByPSI2IiBmaWxsPSIjMTZBMzRBIi8+Cjx0ZXh0IHg9IjExMzIiIHk9IjYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMxQTIyMzgiPkFubsOpZSAyMDI14oCTMjAyNjwvdGV4dD4KCjwhLS0gS1BJIGNhcmRzIC0tPgo8Zz4KPHJlY3QgeD0iMzMwIiB5PSIxMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTE4IiByeD0iMTQiIGZpbGw9IiMxNDIxM0QiLz4KPHRleHQgeD0iMzU0IiB5PSIxMzQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iI0FFQjhEMCI+VGF1eCBkJ29jY3VwYXRpb248L3RleHQ+Cjx0ZXh0IHg9IjM1NCIgeT0iMTgwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI0MiIgZmlsbD0iI2ZmZiI+ODclPC90ZXh0Pgo8cmVjdCB4PSIzNTQiIHk9IjE5NCIgd2lkdGg9IjE3MiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzIzMzc1RSIvPgo8cmVjdCB4PSIzNTQiIHk9IjE5NCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI0M5QTk2MSIvPgo8L2c+CjxnPgo8cmVjdCB4PSI1NjYiIHk9IjEwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMTgiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRThFQkYxIi8+Cjx0ZXh0IHg9IjU4OCIgeT0iMTM0IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM4QTkzQTgiPkFycml2w6llcyBhdWpvdXJkJ2h1aTwvdGV4dD4KPHRleHQgeD0iNTg4IiB5PSIxODAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQyIiBmaWxsPSIjMUEyMjM4Ij40MjwvdGV4dD4KPHRleHQgeD0iNTg4IiB5PSIyMDIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzE2QTM0QSI+MTIgZMOpcGFydHMgcHLDqXZ1czwvdGV4dD4KPC9nPgo8Zz4KPHJlY3QgeD0iNzgyIiB5PSIxMDAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTE4IiByeD0iMTQiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0U4RUJGMSIvPgo8dGV4dCB4PSI4MDQiIHk9IjEzNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjOEE5M0E4Ij5FbmNhaXNzw6kgKE1vTW8pPC90ZXh0Pgo8dGV4dCB4PSI4MDQiIHk9IjE4MCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzgiIGZpbGw9IiMxQTIyMzgiPjMsNE08L3RleHQ+Cjx0ZXh0IHg9IjgwNCIgeT0iMjAyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxNkEzNEEiPuKWsiBGQ0ZBIGNlIG1vaXM8L3RleHQ+CjwvZz4KPGc+CjxyZWN0IHg9IjEwMTgiIHk9IjEwMCIgd2lkdGg9IjI2MiIgaGVpZ2h0PSIxMTgiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRThFQkYxIi8+Cjx0ZXh0IHg9IjEwNDAiIHk9IjEzNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjOEE5M0E4Ij7DgCBlbmNhaXNzZXI8L3RleHQ+Cjx0ZXh0IHg9IjEwNDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzgiIGZpbGw9IiNCNDUzMDkiPjc8L3RleHQ+Cjx0ZXh0IHg9IjEwNDAiIHk9IjIwMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjQjQ1MzA5Ij5mYWN0dXJlcyBlbiBhdHRlbnRlPC90ZXh0Pgo8L2c+Cgo8IS0tIHBsYW5uaW5nIHBhbmVsIC0tPgo8cmVjdCB4PSIzMzAiIHk9IjI1OCIgd2lkdGg9IjY3MiIgaGVpZ2h0PSI2MDIiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRThFQkYxIi8+Cjx0ZXh0IHg9IjM1MCIgeT0iMjkwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxOSIgZmlsbD0iIzFBMjIzOCI+UGxhbm5pbmcgZCdvY2N1cGF0aW9uPC90ZXh0Pgo8dGV4dCB4PSI0NTIiIHk9IjMxMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOEE5M0E4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MdW48L3RleHQ+PHRleHQgeD0iNTE4IiB5PSIzMTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhBOTNBOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFyPC90ZXh0Pjx0ZXh0IHg9IjU4NCIgeT0iMzEyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM4QTkzQTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1lcjwvdGV4dD48dGV4dCB4PSI2NTAiIHk9IjMxMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOEE5M0E4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5KZXU8L3RleHQ+PHRleHQgeD0iNzE2IiB5PSIzMTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhBOTNBOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VmVuPC90ZXh0Pjx0ZXh0IHg9Ijc4MiIgeT0iMzEyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM4QTkzQTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNhbTwvdGV4dD48dGV4dCB4PSI4NDgiIHk9IjMxMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOEE5M0E4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EaW08L3RleHQ+PHRleHQgeD0iMzUwIiB5PSIzNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzFBMjIzOCIgZm9udC13ZWlnaHQ9IjYwMCI+Q2guIDEwMTwvdGV4dD48cmVjdCB4PSI0NDAiIHk9IjMzMCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0M5QTk2MSIvPjxyZWN0IHg9IjUwNiIgeT0iMzMwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iNTcyIiB5PSIzMzAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNFRUYxRjYiLz48cmVjdCB4PSI2MzgiIHk9IjMzMCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjxyZWN0IHg9IjcwNCIgeT0iMzMwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iNzcwIiB5PSIzMzAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48cmVjdCB4PSI4MzYiIHk9IjMzMCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjx0ZXh0IHg9IjM1MCIgeT0iMzkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMxQTIyMzgiIGZvbnQtd2VpZ2h0PSI2MDAiPkNoLiAxMDI8L3RleHQ+PHJlY3QgeD0iNDQwIiB5PSIzNzAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNFRUYxRjYiLz48cmVjdCB4PSI1MDYiIHk9IjM3MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0M5QTk2MSIvPjxyZWN0IHg9IjU3MiIgeT0iMzcwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iNjM4IiB5PSIzNzAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48cmVjdCB4PSI3MDQiIHk9IjM3MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjxyZWN0IHg9Ijc3MCIgeT0iMzcwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iODM2IiB5PSIzNzAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48dGV4dCB4PSIzNTAiIHk9IjQzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMUEyMjM4IiBmb250LXdlaWdodD0iNjAwIj5DaC4gMTAzPC90ZXh0PjxyZWN0IHg9IjQ0MCIgeT0iNDEwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjRENGQ0U3Ii8+PHJlY3QgeD0iNTA2IiB5PSI0MTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNEQ0ZDRTciLz48cmVjdCB4PSI1NzIiIHk9IjQxMCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjxyZWN0IHg9IjYzOCIgeT0iNDEwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iNzA0IiB5PSI0MTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48cmVjdCB4PSI3NzAiIHk9IjQxMCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjxyZWN0IHg9IjgzNiIgeT0iNDEwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjRUVGMUY2Ii8+PHRleHQgeD0iMzUwIiB5PSI0NzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzFBMjIzOCIgZm9udC13ZWlnaHQ9IjYwMCI+Q2guIDIwMTwvdGV4dD48cmVjdCB4PSI0NDAiIHk9IjQ1MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0VFRjFGNiIvPjxyZWN0IHg9IjUwNiIgeT0iNDUwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjRUVGMUY2Ii8+PHJlY3QgeD0iNTcyIiB5PSI0NTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48cmVjdCB4PSI2MzgiIHk9IjQ1MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0M5QTk2MSIvPjxyZWN0IHg9IjcwNCIgeT0iNDUwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjRUVGMUY2Ii8+PHJlY3QgeD0iNzcwIiB5PSI0NTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNDOUE5NjEiLz48cmVjdCB4PSI4MzYiIHk9IjQ1MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0M5QTk2MSIvPjx0ZXh0IHg9IjM1MCIgeT0iNTEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMxQTIyMzgiIGZvbnQtd2VpZ2h0PSI2MDAiPlN1aXRlIDE8L3RleHQ+PHJlY3QgeD0iNDQwIiB5PSI0OTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNFMEMwNzgiLz48cmVjdCB4PSI1MDYiIHk9IjQ5MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0UwQzA3OCIvPjxyZWN0IHg9IjU3MiIgeT0iNDkwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjRTBDMDc4Ii8+PHJlY3QgeD0iNjM4IiB5PSI0OTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNFRUYxRjYiLz48cmVjdCB4PSI3MDQiIHk9IjQ5MCIgd2lkdGg9IjU4IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iI0M5QTk2MSIvPjxyZWN0IHg9Ijc3MCIgeT0iNDkwIiB3aWR0aD0iNTgiIGhlaWdodD0iMzAiIHJ4PSI2IiBmaWxsPSIjQzlBOTYxIi8+PHJlY3QgeD0iODM2IiB5PSI0OTAiIHdpZHRoPSI1OCIgaGVpZ2h0PSIzMCIgcng9IjYiIGZpbGw9IiNFRUYxRjYiLz4KPCEtLSBsZWdlbmQgLS0+CjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhBOTNBOCI+CjxyZWN0IHg9IjM1MCIgeT0iNTQwIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHJ4PSI0IiBmaWxsPSIjQzlBOTYxIi8+PHRleHQgeD0iMzcyIiB5PSI1NTMiPlLDqXNlcnbDqTwvdGV4dD4KPHJlY3QgeD0iNDUyIiB5PSI1NDAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNEQ0ZDRTciLz48dGV4dCB4PSI0NzQiIHk9IjU1MyI+QmxvcXXDqTwvdGV4dD4KPHJlY3QgeD0iNTQ4IiB5PSI1NDAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjQiIGZpbGw9IiNFRUYxRjYiLz48dGV4dCB4PSI1NzAiIHk9IjU1MyI+TGlicmU8L3RleHQ+CjwvZz4KCjwhLS0gYXJyaXZhbHMgcGFuZWwgLS0+CjxyZWN0IHg9IjEwMTgiIHk9IjI1OCIgd2lkdGg9IjI2MiIgaGVpZ2h0PSI2MDIiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRThFQkYxIi8+Cjx0ZXh0IHg9IjEwNDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiMxQTIyMzgiPkFycml2w6llcyBkdSBqb3VyPC90ZXh0Pgo8cmVjdCB4PSIxMDQwIiB5PSIzMjAiIHdpZHRoPSIyMTgiIGhlaWdodD0iNzYiIHJ4PSIxMiIgZmlsbD0iI0Y4RkFGQyIgc3Ryb2tlPSIjRThFQkYxIi8+PGNpcmNsZSBjeD0iMTA3NiIgY3k9IjM1OCIgcj0iMTgiIGZpbGw9IiMwQTFGNDQiLz48dGV4dCB4PSIxMTA0IiB5PSIzNTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNSIgZmlsbD0iIzFBMjIzOCIgZm9udC13ZWlnaHQ9IjcwMCI+TS4gTWJhcmdhPC90ZXh0Pjx0ZXh0IHg9IjExMDQiIHk9IjM3NCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOEE5M0E4Ij5DaC4gMjA0IMK3IERlbHV4ZTwvdGV4dD48cmVjdCB4PSIxMTcwIiB5PSIzNDQiIHdpZHRoPSI3NCIgaGVpZ2h0PSIyOCIgcng9IjE0IiBmaWxsPSIjRENGQ0U3Ii8+PHRleHQgeD0iMTIwNyIgeT0iMzYzIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxNkEzNEEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI3MDAiPlBhecOpPC90ZXh0PjxyZWN0IHg9IjEwNDAiIHk9IjQxMiIgd2lkdGg9IjIxOCIgaGVpZ2h0PSI3NiIgcng9IjEyIiBmaWxsPSIjRjhGQUZDIiBzdHJva2U9IiNFOEVCRjEiLz48Y2lyY2xlIGN4PSIxMDc2IiBjeT0iNDUwIiByPSIxOCIgZmlsbD0iIzBBMUY0NCIvPjx0ZXh0IHg9IjExMDQiIHk9IjQ0NCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE1IiBmaWxsPSIjMUEyMjM4IiBmb250LXdlaWdodD0iNzAwIj5NbWUgRm90c288L3RleHQ+PHRleHQgeD0iMTEwNCIgeT0iNDY2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM4QTkzQTgiPkNoLiAxMTggwrcgU3RhbmRhcmQ8L3RleHQ+PHJlY3QgeD0iMTE2MCIgeT0iNDM2IiB3aWR0aD0iODQiIGhlaWdodD0iMjgiIHJ4PSIxNCIgZmlsbD0iI0ZFRjNDNyIvPjx0ZXh0IHg9IjEyMDIiIHk9IjQ1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjExIiBmaWxsPSIjQjQ1MzA5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNzAwIj5FbiBhdHRlbnRlPC90ZXh0PjxyZWN0IHg9IjEwNDAiIHk9IjUwNCIgd2lkdGg9IjIxOCIgaGVpZ2h0PSI3NiIgcng9IjEyIiBmaWxsPSIjRjhGQUZDIiBzdHJva2U9IiNFOEVCRjEiLz48Y2lyY2xlIGN4PSIxMDc2IiBjeT0iNTQyIiByPSIxOCIgZmlsbD0iIzBBMUY0NCIvPjx0ZXh0IHg9IjExMDQiIHk9IjUzNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE1IiBmaWxsPSIjMUEyMjM4IiBmb250LXdlaWdodD0iNzAwIj5NLiBFcmljIE4uPC90ZXh0Pjx0ZXh0IHg9IjExMDQiIHk9IjU1OCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOEE5M0E4Ij5TdWl0ZSAxIMK3IFZJUDwvdGV4dD48cmVjdCB4PSIxMTcwIiB5PSI1MjgiIHdpZHRoPSI3NCIgaGVpZ2h0PSIyOCIgcng9IjE0IiBmaWxsPSIjRENGQ0U3Ii8+PHRleHQgeD0iMTIwNyIgeT0iNTQ3IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxNkEzNEEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI3MDAiPlBhecOpPC90ZXh0PjxyZWN0IHg9IjEwNDAiIHk9IjU5NiIgd2lkdGg9IjIxOCIgaGVpZ2h0PSI3NiIgcng9IjEyIiBmaWxsPSIjRjhGQUZDIiBzdHJva2U9IiNFOEVCRjEiLz48Y2lyY2xlIGN4PSIxMDc2IiBjeT0iNjM0IiByPSIxOCIgZmlsbD0iIzBBMUY0NCIvPjx0ZXh0IHg9IjExMDQiIHk9IjYyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE1IiBmaWxsPSIjMUEyMjM4IiBmb250LXdlaWdodD0iNzAwIj5NbGxlIEHDr2NoYTwvdGV4dD48dGV4dCB4PSIxMTA0IiB5PSI2NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhBOTNBOCI+Q2guIDEwMiDCtyBTdGFuZGFyZDwvdGV4dD48cmVjdCB4PSIxMTcwIiB5PSI2MjAiIHdpZHRoPSI3NCIgaGVpZ2h0PSIyOCIgcng9IjE0IiBmaWxsPSIjRENGQ0U3Ii8+PHRleHQgeD0iMTIwNyIgeT0iNjM5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxNkEzNEEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI3MDAiPlBhecOpPC90ZXh0Pjwvc3ZnPg==" alt="Interface de gestion Lumea — tableau de bord">
+    </div>
+    <div class="mod-grid">
+      <div class="mod reveal"><div class="mhd"><span class="mi">📊</span><h3>Tableau de bord</h3></div><p>Occupation, arrivées du jour, encaissements et factures en attente, d'un seul regard à l'ouverture.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">📅</span><h3>Réservations</h3></div><p>Créez, modifiez et suivez chaque réservation ; le moteur vérifie la disponibilité et bloque tout surbooking.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">🛏️</span><h3>Planning chambres</h3></div><p>Une grille d'occupation visuelle : réservé, libre, bloqué pour entretien — toute la semaine en un coup d'œil.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">🛎️</span><h3>Réception</h3></div><p>Check-in et check-out, affectation des chambres, gestion des séjours et des extras au comptoir.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">👤</span><h3>Clients</h3></div><p>Base clients avec historique des séjours, coordonnées et préférences pour personnaliser l'accueil.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">💳</span><h3>Facturation &amp; MoMo</h3></div><p>Factures du séjour, arrhes et extras, encaissement Mobile Money et suivi des paiements en temps réel.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">👥</span><h3>Personnel &amp; rôles</h3></div><p>Chaque membre — directeur, réception, comptable, gouvernante — accède uniquement à ce qui le concerne.</p></div>
+      <div class="mod reveal"><div class="mhd"><span class="mi">📈</span><h3>Rapports</h3></div><p>Revenus, taux d'occupation, performance par période : les chiffres pour décider, exportables.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOXECHO / journey -->
+<section class="block feat-section" id="satisfaction">
+  <div class="wrap vox-grid">
+    <div class="vox-photo reveal">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iOTMwIiB2aWV3Qm94PSIwIDAgNzAwIDkzMCI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ2ciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzRDJDNUUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxNDIxM0QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI5MzAiIGZpbGw9InVybCgjZ2cpIi8+CjwhLS0gaGFsbyAtLT4KPGNpcmNsZSBjeD0iMzUwIiBjeT0iMzYwIiByPSIyNDAiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMTIiLz4KPCEtLSBwZXJzb25uYWdlIHN0eWxpc8OpIC0tPgo8Zz4KPGVsbGlwc2UgY3g9IjM1MCIgY3k9IjY0MCIgcng9IjIwMCIgcnk9IjI0MCIgZmlsbD0iIzBBMUY0NCIvPgo8Y2lyY2xlIGN4PSIzNTAiIGN5PSIzNDAiIHI9IjEyMCIgZmlsbD0iI0M5QTA3QSIvPgo8cGF0aCBkPSJNMjMwIDMyMCBhMTIwIDEyMCAwIDAgMSAyNDAgMCBxMCAtMTMwIC0xMjAgLTEzMCBxLTEyMCAwIC0xMjAgMTMweiIgZmlsbD0iIzBDMTczMCIvPgo8cGF0aCBkPSJNMjUwIDM2MCBxMTAwIDcwIDIwMCAwIHEtMjAgOTAgLTEwMCA5MCBxLTgwIDAgLTEwMCAtOTB6IiBmaWxsPSIjQjk4RTY4Ii8+CjwhLS0gc291cmlyZSAtLT4KPHBhdGggZD0iTTMyMCAzOTAgcTMwIDI2IDYwIDAiIHN0cm9rZT0iIzBDMTczMCIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9nPgo8IS0tIMOpdG9pbGVzIGQnYXZpcyAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzUwLDgzMCkiIGZpbGw9IiNFMEMwNzgiPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI4LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTY0LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwwKSIgZD0iTTAgLTIyIEw2IC03IEwyMiAtNiBMMTAgNCBMMTMgMjAgTDAgMTEgTC0xMyAyMCBMLTEwIDQgTC0yMiAtNiBMLTYgLTcgWiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY0LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+CjwvZz4KPC9zdmc+" alt="Cliente satisfaite à l'hôtel">
+      <div class="flow-over">
+        <div class="flow-step"><div class="flow-ic" style="background:var(--night)">🗓️</div><div class="txt"><strong>Réservation</strong><span>Le client réserve & paie par MoMo</span></div></div>
+        <div class="flow-step"><div class="flow-ic" style="background:var(--plum)">🛎️</div><div class="txt"><strong>Séjour</strong><span>Check-in, nuitées, services</span></div></div>
+        <div class="flow-step"><div class="flow-ic" style="background:var(--navy)">🧾</div><div class="txt"><strong>Check-out</strong><span>Facture réglée, départ</span></div></div>
+        <div class="flow-step"><div class="flow-ic" style="background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:var(--night)">⭐</div><div class="txt"><strong>Avis · VoxEcho</strong><span>Enquête automatique</span></div></div>
+      </div>
+    </div>
+    <div class="vox-text reveal">
+      <div class="kicker">Satisfaction client</div>
+      <h2>Votre réputation, pilotée et non subie</h2>
+      <p>Au moment du départ, Lumea déclenche automatiquement une enquête de satisfaction via <strong>VoxEcho</strong>, la plateforme voix-du-client d'Atlastech. Accueil, propreté, confort, recommandation : vous savez ce que vivent vos clients pendant que le souvenir est encore frais.</p>
+      <p>Dans l'hôtellerie, la note en ligne fait le taux de remplissage. Avec Lumea, vous agissez avant que l'avis négatif ne soit publié.</p>
+      <div class="vox-note">Chaque hôtel ne voit que ses propres avis et tableaux de bord. Vos données restent strictement les vôtres.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="block testi">
+  <div class="wrap reveal">
+    <div class="testi-photo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iOTMwIiB2aWV3Qm94PSIwIDAgNzAwIDkzMCI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ2ciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzRDJDNUUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxNDIxM0QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI5MzAiIGZpbGw9InVybCgjZ2cpIi8+CjwhLS0gaGFsbyAtLT4KPGNpcmNsZSBjeD0iMzUwIiBjeT0iMzYwIiByPSIyNDAiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMTIiLz4KPCEtLSBwZXJzb25uYWdlIHN0eWxpc8OpIC0tPgo8Zz4KPGVsbGlwc2UgY3g9IjM1MCIgY3k9IjY0MCIgcng9IjIwMCIgcnk9IjI0MCIgZmlsbD0iIzBBMUY0NCIvPgo8Y2lyY2xlIGN4PSIzNTAiIGN5PSIzNDAiIHI9IjEyMCIgZmlsbD0iI0M5QTA3QSIvPgo8cGF0aCBkPSJNMjMwIDMyMCBhMTIwIDEyMCAwIDAgMSAyNDAgMCBxMCAtMTMwIC0xMjAgLTEzMCBxLTEyMCAwIC0xMjAgMTMweiIgZmlsbD0iIzBDMTczMCIvPgo8cGF0aCBkPSJNMjUwIDM2MCBxMTAwIDcwIDIwMCAwIHEtMjAgOTAgLTEwMCA5MCBxLTgwIDAgLTEwMCAtOTB6IiBmaWxsPSIjQjk4RTY4Ii8+CjwhLS0gc291cmlyZSAtLT4KPHBhdGggZD0iTTMyMCAzOTAgcTMwIDI2IDYwIDAiIHN0cm9rZT0iIzBDMTczMCIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9nPgo8IS0tIMOpdG9pbGVzIGQnYXZpcyAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzUwLDgzMCkiIGZpbGw9IiNFMEMwNzgiPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI4LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTY0LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwwKSIgZD0iTTAgLTIyIEw2IC03IEwyMiAtNiBMMTAgNCBMMTMgMjAgTDAgMTEgTC0xMyAyMCBMLTEwIDQgTC0yMiAtNiBMLTYgLTcgWiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY0LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4LDApIiBkPSJNMCAtMjIgTDYgLTcgTDIyIC02IEwxMCA0IEwxMyAyMCBMMCAxMSBMLTEzIDIwIEwtMTAgNCBMLTIyIC02IEwtNiAtNyBaIi8+CjwvZz4KPC9zdmc+" alt="Propriétaire d'hôtel"></div>
+    <div>
+      <blockquote>Avant, je découvrais les doubles réservations en plein hall, devant le client. Avec Lumea, mon planning est juste, mes paiements sont suivis, et je passe enfin mon temps à accueillir plutôt qu'à corriger des erreurs.</blockquote>
+      <div class="who">M. Directeur d'hôtel</div>
+      <div class="role">Établissement partenaire pilote · Douala</div>
+      <div class="disc">Témoignage illustratif — à remplacer par un retour client réel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Pour qui</div>
+      <h2>Bâti pour les hôteliers, pensé pour durer</h2>
+      <p>Que vous dirigiez votre établissement ou que vous investissiez dans l'hôtellerie africaine.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud hot reveal">
+        <h3>🏨 Pour les propriétaires & directeurs</h3>
+        <ul>
+          <li>Une plateforme unique, simple à prendre en main par votre équipe</li>
+          <li>Plus de temps pour vos clients, moins pour la paperasse</li>
+          <li>Fin des doubles réservations et des litiges à l'arrivée</li>
+          <li>Paiement Mobile Money adapté à votre clientèle</li>
+          <li>Votre établissement à votre image : sous-domaine et identité dédiés</li>
+        </ul>
+      </div>
+      <div class="aud inv reveal">
+        <h3>📈 Pour les investisseurs & partenaires</h3>
+        <ul>
+          <li>Modèle SaaS récurrent, vendu hôtel par hôtel</li>
+          <li>Architecture multi-établissements scalable dès la conception</li>
+          <li>Marché africain de l'hôtellerie largement sous-numérisé</li>
+          <li>Édité par Atlastech Solution, au sein d'une suite cohérente</li>
+          <li>Revenus combinés : abonnement + commission sur paiements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="block price-section" id="tarifs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Tarifs</div>
+      <h2>Un abonnement par hôtel, simple et clair</h2>
+      <p>Choisissez selon la taille de votre établissement. Sans engagement compliqué.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price reveal">
+        <div class="pname">Essentiel</div>
+        <div class="pdesc">Pour les petits hôtels et auberges</div>
+        <div class="pamount">Sur devis <small>/ mois</small></div>
+        <ul>
+          <li>Réservations & planning</li>
+          <li>Réception check-in / out</li>
+          <li>Facturation Mobile Money</li>
+          <li>Jusqu'à 20 chambres</li>
+        </ul>
+        <a href="#contact" class="pbtn solid">Demander un devis</a>
+      </div>
+      <div class="price feat-card reveal">
+        <span class="tagp">LE PLUS CHOISI</span>
+        <div class="pname">Professionnel</div>
+        <div class="pdesc">Pour les hôtels établis</div>
+        <div class="pamount">Sur devis <small>/ mois</small></div>
+        <ul>
+          <li>Tout l'Essentiel, sans limite de chambres</li>
+          <li>Tableaux de bord avancés</li>
+          <li>Satisfaction client VoxEcho</li>
+          <li>Identité & sous-domaine dédiés</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <a href="#contact" class="pbtn gold">Demander une démo</a>
+      </div>
+      <div class="price reveal">
+        <div class="pname">Sur mesure</div>
+        <div class="pdesc">Groupes & projets spécifiques</div>
+        <div class="pamount">Contact <small>direct</small></div>
+        <ul>
+          <li>Plusieurs établissements</li>
+          <li>Intégrations spécifiques</li>
+          <li>Accompagnement dédié</li>
+          <li>Conditions négociées</li>
+        </ul>
+        <a href="#contact" class="pbtn solid">Nous contacter</a>
+      </div>
+    </div>
+    <p class="price-note">Les tarifs sont établis selon la taille de votre établissement et les modules choisis. Contactez-nous pour une proposition adaptée.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Questions fréquentes</div>
+      <h2>Ce que les hôteliers nous demandent</h2>
+    </div>
+    <div class="faq-grid">
+      <details class="faq reveal"><summary>Faut-il du matériel ou une installation compliquée ?</summary><div class="a">Non. Lumea fonctionne dans votre navigateur, sur ordinateur, tablette ou téléphone. Aucun logiciel à installer : vous vous connectez et vous gérez votre hôtel.</div></details>
+      <details class="faq reveal"><summary>Comment fonctionne le paiement Mobile Money ?</summary><div class="a">Lumea intègre l'encaissement Mobile Money pour les arrhes, les séjours et les extras. Les paiements sont suivis en temps réel dans votre tableau de bord, sans ressaisie.</div></details>
+      <details class="faq reveal"><summary>Mes données sont-elles partagées avec d'autres hôtels ?</summary><div class="a">Jamais. Chaque hôtel est totalement isolé : vous ne voyez que vos données, vos réservations et vos avis. Aucun autre établissement n'y a accès.</div></details>
+      <details class="faq reveal"><summary>Est-ce adapté à un petit hôtel ?</summary><div class="a">Oui. L'offre Essentiel est pensée pour les petits hôtels et auberges, et Lumea grandit avec vous quand votre établissement se développe.</div></details>
+      <details class="faq reveal"><summary>Comment se passe la mise en route ?</summary><div class="a">L'équipe Atlastech configure votre établissement (chambres, tarifs, identité) et accompagne votre équipe. Vous démarrez rapidement, sans stress.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-bg"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJwcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0E4ODUzRiIvPjxzdG9wIG9mZnNldD0iMC40IiBzdG9wLWNvbG9yPSIjM0QyQzVFIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEMxNzMwIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJ3YXRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzJBNEE3RiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBBMUY0NCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjcHMpIi8+CjxjaXJjbGUgY3g9IjMwMCIgY3k9IjIwMCIgcj0iOTAiIGZpbGw9IiNGRkU5QjgiIG9wYWNpdHk9IjAuOSIvPgo8IS0tIGjDtHRlbCBhdSBmb25kIC0tPgo8cmVjdCB4PSI5MDAiIHk9IjE4MCIgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzNDAiIGZpbGw9IiMwQzE3MzAiIG9wYWNpdHk9IjAuODUiLz4KPHJlY3QgeD0iOTMwIiB5PSIyMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC4zIi8+PHJlY3QgeD0iOTk0IiB5PSIyMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjEwNTgiIHk9IjIxMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMTIyIiB5PSIyMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjExODYiIHk9IjIxMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMjUwIiB5PSIyMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjEzMTQiIHk9IjIxMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMzc4IiB5PSIyMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjkzMCIgeT0iMjcwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuODUiLz48cmVjdCB4PSI5OTQiIHk9IjI3MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMDU4IiB5PSIyNzAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjExMjIiIHk9IjI3MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMTg2IiB5PSIyNzAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjEyNTAiIHk9IjI3MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIxMzE0IiB5PSIyNzAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9IjEzNzgiIHk9IjI3MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSI5MzAiIHk9IjMzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSI5OTQiIHk9IjMzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTA1OCIgeT0iMzMwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjExMjIiIHk9IjMzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTE4NiIgeT0iMzMwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjEyNTAiIHk9IjMzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTMxNCIgeT0iMzMwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjEzNzgiIHk9IjMzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iOTMwIiB5PSIzOTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MiIgZmlsbD0iI0UwQzA3OCIgb3BhY2l0eT0iMC44NSIvPjxyZWN0IHg9Ijk5NCIgeT0iMzkwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjEwNTgiIHk9IjM5MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTEyMiIgeT0iMzkwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjExODYiIHk9IjM5MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTI1MCIgeT0iMzkwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjEzMTQiIHk9IjM5MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjRTBDMDc4IiBvcGFjaXR5PSIwLjg1Ii8+PHJlY3QgeD0iMTM3OCIgeT0iMzkwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDIiIGZpbGw9IiNFMEMwNzgiIG9wYWNpdHk9IjAuMyIvPgo8IS0tIHBhbG1pZXJzIC0tPgo8ZyBmaWxsPSIjMEMxNzMwIj48cmVjdCB4PSIxODAiIHk9IjQzMCIgd2lkdGg9IjE4IiBoZWlnaHQ9IjIyMCIvPgo8cGF0aCBkPSJNMTg5IDQzMCBxLTcwIC00MCAtMTIwIC0xNSBxNjAgLTggMTIwIDMwIHE4IC01NSA5NSAtNjAgcS02NSAtMTAgLTk1IDQ1eiIgLz48L2c+CjwhLS0gcGlzY2luZSAtLT4KPHJlY3QgeD0iMCIgeT0iNTYwIiB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIzNDAiIGZpbGw9InVybCgjd2F0ZXIpIi8+CjxnIG9wYWNpdHk9IjAuMjUiIHN0cm9rZT0iI0UwQzA3OCIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTAgNjAwIHE0MDAgMjAgODAwIDAgcTQwMCAtMjAgODAwIDAiLz48cGF0aCBkPSJNMCA2NDAgcTQwMCAyMCA4MDAgMCBxNDAwIC0yMCA4MDAgMCIvPjxwYXRoIGQ9Ik0wIDY4MCBxNDAwIDIwIDgwMCAwIHE0MDAgLTIwIDgwMCAwIi8+PHBhdGggZD0iTTAgNzIwIHE0MDAgMjAgODAwIDAgcTQwMCAtMjAgODAwIDAiLz48cGF0aCBkPSJNMCA3NjAgcTQwMCAyMCA4MDAgMCBxNDAwIC0yMCA4MDAgMCIvPjxwYXRoIGQ9Ik0wIDgwMCBxNDAwIDIwIDgwMCAwIHE0MDAgLTIwIDgwMCAwIi8+CjwvZz4KPCEtLSB0cmFuc2F0cyAtLT4KPHJlY3QgeD0iMjIwIiB5PSI2MDAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjYiIHJ4PSI4IiBmaWxsPSIjRjdGM0VBIiBvcGFjaXR5PSIwLjkiLz4KPHJlY3QgeD0iNDMwIiB5PSI2MDAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjYiIHJ4PSI4IiBmaWxsPSIjRjdGM0VBIiBvcGFjaXR5PSIwLjkiLz4KPC9zdmc+" alt="Piscine d'hôtel au coucher du soleil"></div>
+  <div class="cta-inner wrap">
+    <h2>Faites entrer votre hôtel dans la lumière</h2>
+    <p>Demandez une démonstration de Lumea ou échangeons sur un partenariat. L'équipe Atlastech vous répond rapidement.</p>
+    <a href="https://wa.me/237622524544" class="btn-primary">Discuter sur WhatsApp →</a>
+    <div class="contacts">
+      <span class="contact-pill">✉️ contact@atlastech.cm</span>
+      <span class="contact-pill">📞 +237 622 52 45 44</span>
+      <span class="contact-pill">📞 +237 641 17 53 43</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="top">
+          <div class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z" fill="#14213D"/><circle cx="12" cy="11" r="3.2" fill="#14213D"/><path d="M12 11l4-2.3M12 11v4.6M12 11L8 8.7" stroke="#C9A961" stroke-width="1.1"/></svg></div>
+          <span class="name">Lumea</span>
+        </div>
+        <p>Le logiciel de gestion qui fait rayonner les hôtels d'Afrique. Réservations, réception, paiement Mobile Money et satisfaction client.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Produit</h4>
+        <a href="#hotel">Votre hôtel</a>
+        <a href="#fonctions">Fonctionnalités</a>
+        <a href="#satisfaction">Satisfaction</a>
+        <a href="#tarifs">Tarifs</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/237622524544">WhatsApp</a>
+        <a href="mailto:contact@atlastech.cm">contact@atlastech.cm</a>
+        <a href="#contact">Demander une démo</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      Lumea · lumea.cm — Un produit <span class="by">Atlastech Solution</span>, Douala 🇨🇲 · © 2026 Atlastech Solution. Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),(i%3)*80);obs.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
